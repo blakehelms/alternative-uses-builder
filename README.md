@@ -1,85 +1,124 @@
 # Alternative Uses Builder
 
-A clean starter version of a behavioral experiment for creative object-use generation.
-It is open source and uses only Python's standard library.
+Alternative Uses Builder is a simple Python-based behavioral experiment for studying creative idea generation and mouse movement behavior.
 
-Participants are asked:
+Participants are asked to create as many different uses for a brick as possible using only the basic shapes on the screen. They build each idea by dragging, moving, resizing, and rotating shapes in a blank workspace, then submit a short written description of the object they made.
+
+The task is designed as a clean starter version that is easy to run, inspect, and expand for future research conditions.
+
+## Experiment Prompt
 
 > Using only the shapes on the screen, create as many different uses for a brick as possible.
 
-They drag basic shapes into a blank workspace, move/resize/rotate them, type a short description of the idea, and submit it. Each submitted idea is saved as one CSV row.
+Example responses might include:
 
-## Run
+- phone stand
+- doorstop
+- hammer
+- small house
+
+## Task Flow
+
+1. Welcome screen with participant information fields
+2. Instructions screen
+3. Practice round
+4. Main drag-and-drop shape workspace
+5. Short written description for each idea
+6. Submit Idea button
+7. Workspace reset after each submitted idea
+8. End screen with the total number of ideas submitted
+
+## Participant Interaction
+
+- Drag shapes from the side panel into the workspace.
+- Move shapes around the workspace.
+- Resize shapes using the blue handle.
+- Rotate shapes using the green handle.
+- Type a short description of the idea.
+- Submit the idea and begin the next one.
+
+The practice round is not saved to the experiment CSV.
+
+## Data Collected
+
+Each submitted idea is saved as one CSV row. The app records:
+
+- participant ID
+- first name
+- last name
+- TAMU email, preferred but optional
+- phone number
+- idea number
+- typed description
+- time spent on the idea
+- number of shapes used
+- number of moves
+- mouse position history
+- total mouse distance
+- number of rotations
+- number of resizes
+- idea start timestamp
+- submission timestamp
+- final shape layout
+
+CSV files are saved locally in the `data/` folder.
+
+## Main Research Measures
+
+This starter task supports common creativity and behavioral measures such as:
+
+- fluency: total number of submitted ideas
+- originality: scored later from the written descriptions
+- time per idea
+- mouse movement patterns
+- total mouse distance
+- shape manipulation behavior
+- rotation and resize behavior
+
+## Running the Experiment
+
+This project uses only Python's standard library. No extra packages are required.
 
 ```bash
 python alternative_uses_builder.py
 ```
 
-If you downloaded the project as a ZIP from GitHub, unzip it first, then run the command above from the unzipped folder.
+On some computers, the command may be:
 
-## Download
+```bash
+python3 alternative_uses_builder.py
+```
 
-Recommended public link format for a class document:
+## Downloading the Project
+
+Open the repository page:
 
 ```text
-Alternative Uses Builder: https://github.com/blakehelms/alternative-uses-builder
+https://github.com/blakehelms/alternative-uses-builder
 ```
 
-After you publish the folder to GitHub, participants can click the green **Code** button, choose **Download ZIP**, unzip the folder, and run:
-
-```bash
-python alternative_uses_builder.py
-```
-
-## Current Flow
-
-1. Welcome screen with ID, first name, last name, TAMU email preferred, and phone number
-2. Instructions screen
-3. Practice round using the same shape workspace
-4. Main shape workspace with draggable square, rectangle, circle, and triangle
-5. Description field and Submit Idea button
-6. CSV data saved in `data/`
-7. End screen with total number of submitted ideas
-
-## Interaction
-
-- Drag a shape from the left panel into the workspace.
-- Drag an existing shape to move it.
-- Select a shape to show controls.
-- Drag the blue square handle to resize.
-- Drag the green circular handle to rotate.
-- Type a short description, then press Submit Idea.
-- The practice round is not saved to the experiment CSV.
-- TAMU email is preferred but optional.
-
-## CSV Fields
-
-- `participant_id`
-- `first_name`
-- `last_name`
-- `tamu_email`
-- `phone_number`
-- `idea_number`
-- `description`
-- `time_spent_seconds`
-- `number_of_shapes_used`
-- `number_of_moves`
-- `mouse_positions_json`
-- `total_mouse_distance_px`
-- `rotation_count`
-- `resize_count`
-- `idea_started_at`
-- `submitted_at`
-- `shape_layout_json`
+Then click **Code**, choose **Download ZIP**, unzip the folder, and run the Python file.
 
 ## Expansion Points
 
-The code is intentionally organized for later study variants:
+The code is organized so later study versions can add:
 
-- `ExperimentConfig` can enable idea limits, countdown timers, stress conditions, sounds, AI hints, or EEG markers.
-- `ExperimentHooks` contains no-op methods for task start, idea start, idea submit, and EEG marker sending.
-- `IdeaState` holds per-idea behavior data.
-- `DataLogger` owns the CSV format.
-- `ShapeItem` owns the final layout information for each shape.
+- stress conditions
+- countdown timers
+- warning sounds
+- AI hints
+- EEG markers
+- idea limits
+- condition assignment
+- additional shape tools
+- more detailed movement analysis
 
-Originality is usually scored after data collection by comparing descriptions across participants or against a coding scheme. This starter app records the descriptions and behavioral traces needed for that analysis.
+Useful places to extend the code include:
+
+- `ExperimentConfig` for task settings
+- `ExperimentHooks` for task events and future EEG markers
+- `IdeaState` for per-idea behavioral data
+- `DataLogger` for the CSV format
+- `ShapeItem` for each shape's saved layout
+
+Originality is usually scored after data collection by comparing descriptions across participants or against a coding scheme. This app records the descriptions and behavioral traces needed for that analysis.
