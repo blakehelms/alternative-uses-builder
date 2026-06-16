@@ -22,7 +22,7 @@ If you downloaded the project as a ZIP from GitHub, unzip it first, then run the
 Recommended public link format for a class document:
 
 ```text
-Alternative Uses Builder: https://github.com/YOUR-USERNAME/alternative-uses-builder
+Alternative Uses Builder: https://github.com/blakehelms/alternative-uses-builder
 ```
 
 After you publish the folder to GitHub, participants can click the green **Code** button, choose **Download ZIP**, unzip the folder, and run:
